@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: micro-arch
+spec:
+    replicas: 2
+    selector:
+       matchLabels:
+          app: micro-arch
+    template:
+       metadata:
+          labels:
+             app: micro-arch
+       spec:
+          containers:
+          - name: micro-arch
+            image: spacemancola/micro-arch
+            ports:
+              - name: http
+                containerPort: 8000
+                protocol: TCP
+#              - name: actuator
+#                containerPort: 8081
+#                protocol: TCP
+#            livenessProbe:
+#              httpGet:
+#                path: "/actuator/health/liveness"
+#                port: actuator
+#              failureThreshold: 30
+#              periodSeconds: 10
+#            readinessProbe:
+#              httpGet:
+#                path: "/actuator/health/readiness"
+#                port: actuator
+#              failureThreshold: 30
+#              periodSeconds: 10
