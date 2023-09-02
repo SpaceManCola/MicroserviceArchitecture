@@ -19,3 +19,20 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          env:
+            - name: DB_URL
+              value: jdbc:postgresql://{{ include "postgresql.fullname" . }}:{{ .Values.postgresql.containerPorts.postgresql }}/{{ .Values.postgresql.auth.database }}
+            - name: DB_USER
+              value: {{ .Values.postgresql.auth.username }}
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: DB_PASSWORD
+#          volumeMounts:
+#            - name: micro-arch-config
+#              mountPath: /app/config
+#      volumes:
+#        - name: micro-arch-config
+#          configMap:
+#            name: micro-arch-config

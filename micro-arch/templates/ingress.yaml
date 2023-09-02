@@ -14,7 +14,7 @@ apiVersion: extensions/v1beta1
   {{- end }}
 kind: Ingress
 metadata:
-  name: micro-arch
+  name: {{ .Values.fullnameOverride }}
 spec:
   ingressClassName: {{ .Values.ingress.className }}
   rules:
@@ -27,7 +27,7 @@ spec:
             pathType: {{ .pathType }}
             backend:
               service:
-                name: micro-arch
+                name: {{ $.Values.fullnameOverride }}
                 port:
                   number: {{ $svcPort }}
           {{- end }}

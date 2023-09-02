@@ -2,11 +2,10 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 2
+replicaCount: 1
 
 image:
   repository: spacemancola/micro-arch
-  tag: "0.1"
 
 nameOverride: "micro-arch"
 fullnameOverride: "micro-arch"
@@ -24,3 +23,10 @@ ingress:
       paths:
         - path: /
           pathType: ImplementationSpecific
+postgresql:
+  enabled: true
+  auth:
+    postgresPassword: "postgres"
+    username: "myuser"
+    password: "passwd"
+    database: "myapp"

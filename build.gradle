@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'inc.cognito'
-version = '0.0.2'
+version = '0.0.3'
 
 java {
 	sourceCompatibility = '20'
@@ -20,4 +20,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'com.zaxxer:HikariCP:5.0.1'
+	implementation 'org.postgresql:postgresql:42.6.0'
+	//implementation 'com.h2database:h2:2.2.220'
 }
