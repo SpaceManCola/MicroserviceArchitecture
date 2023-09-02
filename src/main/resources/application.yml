@@ -3,6 +3,14 @@ server:
 spring:
   application:
     name: micro-arch
+  hikari:
+    #idleTimeout - не использовать
+    minimumIdle: 10
+    maximumPoolSize: 10
+    poolName: hikariPostgresPool
+    maxLifetime: 20000
+    connectionTimeout: 5000
+    autoCommit: false
 management:
   server:
     port: 8081
