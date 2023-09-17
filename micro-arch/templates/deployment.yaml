@@ -15,15 +15,21 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: Always
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
+              protocol: TCP
+            - name: actuator
+              containerPort: {{ .Values.service.actuatorPort }}
               protocol: TCP
           env:
             - name: DB_URL
               value: jdbc:postgresql://{{ include "postgresql.fullname" . }}:{{ .Values.postgresql.containerPorts.postgresql }}/{{ .Values.postgresql.auth.database }}
             - name: DB_USER
               value: {{ .Values.postgresql.auth.username }}
+            - name: DB_DRIVER_NAME
+              value: {{ .Values.dbDriverClassName }}
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:

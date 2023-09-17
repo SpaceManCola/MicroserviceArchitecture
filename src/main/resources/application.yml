@@ -4,6 +4,7 @@ spring:
   application:
     name: micro-arch
 management:
+  metrics.distribution.percentiles-histogram.http.server.requests: true
   server:
     port: 8081
   endpoints:
@@ -33,3 +34,4 @@ db:
   url: ${DB_URL}
   username: ${DB_USER}
   password: ${DB_PASSWORD}
+  driverClassName: ${DB_DRIVER_NAME}

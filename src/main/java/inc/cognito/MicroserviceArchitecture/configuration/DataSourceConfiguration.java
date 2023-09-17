@@ -15,7 +15,7 @@ public class DataSourceConfiguration {
     public HikariConfig hikariConfig(Environment env) {
         HikariConfig config = new HikariConfig();
         config.setPoolName("hikariPostgresPool");
-        config.setDriverClassName("org.postgresql.Driver");
+        config.setDriverClassName(env.getRequiredProperty("db.driverClassName"));
         config.setJdbcUrl(env.getRequiredProperty("db.url"));
         config.setUsername(env.getRequiredProperty("db.username"));
         config.setPassword(env.getRequiredProperty("db.password"));

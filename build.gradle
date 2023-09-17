@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'inc.cognito'
-version = '0.0.3'
+version = '0.0.4'
 
 java {
 	sourceCompatibility = '20'
@@ -21,5 +21,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 	implementation 'com.zaxxer:HikariCP:5.0.1'
 	implementation 'org.postgresql:postgresql:42.6.0'
-	//implementation 'com.h2database:h2:2.2.220'
+	implementation 'com.h2database:h2:2.2.220'
+	implementation 'io.micrometer:micrometer-registry-prometheus:1.11.4'
+	implementation 'io.micrometer:micrometer-registry-jmx:1.11.4'
 }
